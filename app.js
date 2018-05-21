@@ -15,7 +15,7 @@ var Gpio = require('pigpio').Gpio,
 
 app.get('/', function(req, res){
   res.sendfile('Touch.html');
-  console.log('HTML sent to client');
+  console.log('HTML sent to client!');
 });
 
 child = exec("sudo bash start_stream.sh", function(error, stdout, stderr){});
