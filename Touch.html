@@ -537,6 +537,7 @@ function sendControls(){
 	if(sendFlag == true){
 		//socket.emit('pos', leftVector.x, leftVector.y);
 		socket.emit('pos', leftMot, rightMot);
+		//console.log(leftMot, rightMot);
 		sendFlag = false;
 	}
 }

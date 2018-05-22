@@ -6,14 +6,19 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var exec = require('child_process').exec, child;
 var port = process.env.PORT || 3000;
-var ads1x15 = require('node-ads1x15');
-var adc = new ads1x15(1); // set to 0 for ads1015
-var Gpio = require('pigpio').Gpio,
+
+//Comment out if running on rpi
+//var adc = new ads1x15(1); // set to 0 for ads1015
+//var ads1x15 = require('node-ads1x15');
+
+//Comment out if running on rpi
+/*var Gpio = require('pigpio').Gpio,
   A1 = new Gpio(27, {mode: Gpio.OUTPUT}),
   A2 = new Gpio(17, {mode: Gpio.OUTPUT}),
   B1 = new Gpio( 4, {mode: Gpio.OUTPUT}),
   B2 = new Gpio(18, {mode: Gpio.OUTPUT});
-  LED = new Gpio(22, {mode: Gpio.OUTPUT});
+  LED = new Gpio(22, {mode: Gpio.OUTPUT});*/
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -26,7 +31,7 @@ app.get('/', function(req, res){
   console.log('HTML sent to client!');
 });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-
+//
 
 
 
@@ -49,10 +54,14 @@ io.on('connection', function(socket){
   socket.on('pos', function (msx, msy) {
     //console.log('X:' + msx + ' Y: ' + msy);
     //io.emit('posBack', msx, msy);
-	
+
+
     msx = Math.min(Math.max(parseInt(msx), -255), 255);
     msy = Math.min(Math.max(parseInt(msy), -255), 255);
 
+    console.log(msx, msy);
+    //Comment out if running on rpi
+    /*
     if(msx > 0){
       A1.pwmWrite(msx);
       A2.pwmWrite(0);
@@ -67,8 +76,7 @@ io.on('connection', function(socket){
     } else {
       B1.pwmWrite(0);
       B2.pwmWrite(Math.abs(msy));
-    }
-
+    }*/
 
   });
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,7 +87,7 @@ io.on('connection', function(socket){
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
   socket.on('light', function(toggle) {
-    LED.digitalWrite(toggle);    
+    LED.digitalWrite(toggle);  
   });  
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -142,7 +150,10 @@ io.on('connection', function(socket){
          console.log('temp', temp);
       }
     });
-    if(!adc.busy){
+
+
+    //Comment out if running on rpi
+    /*if(!adc.busy){
       adc.readADCSingleEnded(0, '4096', '250', function(err, data){ //channel, gain, samples
         if(!err){          
           voltage = 2*parseFloat(data)/1000;
@@ -150,7 +161,7 @@ io.on('connection', function(socket){
           io.emit('volt', voltage);
         }
       });
-    }
+    }*/
   }, 5000);
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
