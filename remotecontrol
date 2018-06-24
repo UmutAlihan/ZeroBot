@@ -1,0 +1,1 @@
+ssh -nNTv -R 0.0.0.0:(remote-port):localhost:(local-port) -R 0.0.0.0:(remote-port):localhost:(local-port) (user)@(remote-ip)

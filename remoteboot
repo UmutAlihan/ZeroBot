@@ -1,0 +1,8 @@
+buy wittypi2:
+http://www.uugear.com/product/wittypi2/
+
+
+running nodemcu on low battery:  (deep sleep)
+https://tinker.yeoman.com.au/2016/05/29/running-nodemcu-on-a-battery-esp8266-low-power-consumption-revisited/
+https://openhomeautomation.net/esp8266-battery
+https://github.com/openhomeautomation/esp8266-battery/blob/master/esp8266_low_power/esp8266_low_power.ino
