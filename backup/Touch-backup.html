@@ -551,10 +551,7 @@ function sendControls(){
 // This script automatically picks the right IP for the stream 
 // Thanks to wonx (github.com/wonx)
 host = window.location.hostname;
-port_t = "2098"
-port_l = "3003"
-img = '<img src="http://' + host + ':' + port_l + '/?action=stream" style="height:100vh;"/>';
-//console.log(host);
+img = '<img src="http://' + host + ':3003/?action=stream" style="height:100vh;"/>';
 //img = '<img src="stream.png" style="height:100vh;"/>';
 document.getElementById("stream").innerHTML = img;
 function takePicture() {

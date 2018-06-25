@@ -57,7 +57,7 @@ io.on('connection', function(socket){
       A2.pwmWrite(0);
     } else {
       A1.pwmWrite(0);
-//      A2.pwmWrite(Math.abs(msx));
+      A2.pwmWrite(Math.abs(msx));
     }
 
     if(msy > 0){
@@ -65,20 +65,16 @@ io.on('connection', function(socket){
       B2.pwmWrite(0);
     } else {
       B1.pwmWrite(0);
-//     B2.pwmWrite(Math.abs(msy));
+     B2.pwmWrite(Math.abs(msy));
     }
 
 	//without steering only back
-if(msx < 0 && msy < 0){
-A2.pwmWrite(Math.abs(msx));
-B2.pwmWrite(Math.abs(msy));
-}
-else {
-A2.pwmWrite(0);
-B2.pwmWrite(0);
-}
-});
+//if(msx < 0 && msy < 0){
+//A2.pwmWrite(Math.abs(msx));
+//B2.pwmWrite(Math.abs(msy));
+//}
 
+  });
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -87,8 +83,8 @@ B2.pwmWrite(0);
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
   socket.on('light', function(toggle) {
-    LED.digitalWrite(toggle);
-  });
+    LED.digitalWrite(toggle);    
+  });  
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
