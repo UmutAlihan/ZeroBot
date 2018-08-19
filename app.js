@@ -3,7 +3,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var exec = require('child_process').exec, child;
-var port = process.env.PORT || 3001;
+var port = process.env.PORT || 3003;
 
 //Comment out if running on rpi
 var ads1x15 = require('node-ads1x15');
@@ -152,15 +152,15 @@ io.on('connection', function(socket){
 
 
     //Comment out if running on rpi
-    /*if(!adc.busy){
+    if(!adc.busy){
       adc.readADCSingleEnded(0, '4096', '250', function(err, data){ //channel, gain, samples
-        if(!err){          
+        if(!err){
           voltage = 2*parseFloat(data)/1000;
           console.log("ADC: ", voltage);
           io.emit('volt', voltage);
         }
       });
-    }*/
+    }
   }, 5000);
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
