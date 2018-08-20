@@ -566,6 +566,9 @@ function shutdown() {
 		socket.emit('power', 1);
 	}
 }
+function restart_procs() {
+	socket.emit("restart_proc",1);
+}
 // Handle headlight button
 function handleHeadlightClick(cb) {
   if (cb.checked) {
@@ -589,7 +592,8 @@ function handleHeadlightClick(cb) {
 <div class="sidenav" style="right:0;z-index: 2;">
   <center class="off_button" type="button" onclick="shutdown()">OFF</center>
   <center class="cam_button" type="button" onclick="takePicture()"></center>
-  <div>
+  <center class="off_button" type="button" onclick="restart_procs()">restart_procs</center> 
+<div>
     <div class="switch">
         <input id="cmn-toggle"css class="cmn-toggle cmn-toggle-round-flat" type="checkbox" onclick="handleHeadlightClick(this)">
         <label for="cmn-toggle">LIGHT</label>
