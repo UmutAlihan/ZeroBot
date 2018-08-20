@@ -1,0 +1,4 @@
+if portforward fails without reason:
+	- ps -ef | grep ssh -> kill related processes
+	 (https://superuser.com/questions/707727/warning-remote-port-forwarding-failed-for-listen-port-xxxx)
+

@@ -8,13 +8,12 @@ var port = process.env.PORT || 3003;
 //Comment out if running on rpi
 var ads1x15 = require('node-ads1x15');
 var adc = new ads1x15(1); // set to 0 for ads1015
-//var ads1x15 = require('node-ads1x15');
 
 //Comment out if running on rpi
 var Gpio = require('pigpio').Gpio,
   A1 = new Gpio(27, {mode: Gpio.OUTPUT}),
   A2 = new Gpio(17, {mode: Gpio.OUTPUT}),
-  B1 = new Gpio( 4, {mode: Gpio.OUTPUT}),
+  B1 = new Gpio(4, {mode: Gpio.OUTPUT}),
   B2 = new Gpio(18, {mode: Gpio.OUTPUT});
   LED = new Gpio(22, {mode: Gpio.OUTPUT});
 
@@ -48,17 +47,17 @@ child = exec("sudo bash start_stream.sh", function(error, stdout, stderr){});
 //Whenever someone connects this gets executed
 io.on('connection', function(socket){
   console.log('A user connected');
-  
+
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
   socket.on('pos', function (msx, msy) {
-    //console.log('X:' + msx + ' Y: ' + msy);
+    console.log('X:' + msx + ' Y: ' + msy);
     //io.emit('posBack', msx, msy);
 
 
     msx = Math.min(Math.max(parseInt(msx), -255), 255);
     msy = Math.min(Math.max(parseInt(msy), -255), 255);
 
-    console.log(msx, msy);
+    //console.log(msx, msy);
     //Comment out if running on rpi
 
     if(msx > 0){
@@ -75,8 +74,8 @@ io.on('connection', function(socket){
     } else {
       B1.pwmWrite(0);
       B2.pwmWrite(Math.abs(msy));
+console.log(B2.pwmWrite(Math.abs(msy)));
     }
-
   });
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
