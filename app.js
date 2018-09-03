@@ -14,7 +14,7 @@ var Gpio = require('pigpio').Gpio,
   A1 = new Gpio(27, {mode: Gpio.OUTPUT}),
   A2 = new Gpio(17, {mode: Gpio.OUTPUT}),
   B1 = new Gpio(24, {mode: Gpio.OUTPUT}),
-  B2 = new Gpio(18, {mode: Gpio.OUTPUT});
+  B2 = new Gpio(18, {mode: Gpio.OUTPUT}),
   LED = new Gpio(22, {mode: Gpio.OUTPUT});
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
